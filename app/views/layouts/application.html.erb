@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Metablog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= display_meta_tags site: "RubyEvents",
+                          title: "Find ruby events around you",
+                          description: "All ruby events since 2014 in one place",
+                          reverse: true,
+                          image: asset_url("logo.png"),
+                          og: {
+                            title: :title,
+                            description: :description,
+                            image: asset_url("logo.png"),
+                            type: "website",
+                            url: request.original_url
+                          },
+                          icon: "/favicon.ico",
+                          author: "Yaro Shm"
+                          # icon: "/favicon.png", type: "image/png"
+      %>
   </head>
 
   <body>

@@ -6,10 +6,16 @@ class EventsController < ApplicationController
   end
 
   def show
+    set_meta_tags title: @event.name,
+                  description: [@event.location, @event.start_date, @event.end_date].join(" - "),
+                  og: { type: "article" },
+                  type: "article",
+                  published_time: @event.created_at.iso8601
   end
 
   def new
     @event = Event.new
+    set_meta_tags title: "New event"
   end
 
   def edit
